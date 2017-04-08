@@ -142,6 +142,7 @@ plot(states.data$energy, states.data$metro)
 energy.mod <- lm(energy ~ metro, # regression formula
               data=states.data) # data set
 summary(energy.mod)
+par(mar = c(4, 4, 2, 2), mfrow = c(1, 2)) #optional
 plot(energy.mod, which = c(1, 2))
 
 ##   Select one or more additional predictors to add to your model and
@@ -154,11 +155,13 @@ plot(energy.mod, which = c(1, 2))
 energy.income.mod <- lm(energy ~ metro + income, # regression formula
                  data=states.data)
 summary(energy.income.mod)
+par(mar = c(4, 4, 2, 2), mfrow = c(1, 2)) #optional
 plot(energy.house.mod, which = c(1, 2))
 
 energy.house.mod <- lm(energy ~ metro + income + house, # regression formula
                        data=states.data)
 summary(energy.house.mod)
+par(mar = c(4, 4, 2, 2), mfrow = c(1, 2)) #optional
 plot(energy.house.mod, which = c(1, 2))
 
 ## Interactions and factors
@@ -241,4 +244,4 @@ states.data$region <- factor(states.data$region)
 energy.region.mod <- lm(energy ~ metro + house + region, # regression formula
                      data=states.data) # data set
 summary(energy.region.mod)
-
+anova(energy.int.mod, energy.region.mod)
